@@ -1,0 +1,25 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.demo",
+    "tns-ios": {
+      "version": "3.0.1"
+    },
+    "tns-android": {
+      "version": "3.0.0"
+    }
+  },
+  "dependencies": {
+    "nativescript-meme-generator": "file:///Users/tj/Desktop/nativescript-meme-generator",
+    "nativescript-theme-core": "~1.0.4",
+    "tns-core-modules": "~3.0.1"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.24.1",
+    "babel-types": "6.24.1",
+    "babylon": "6.17.1",
+    "lazy": "1.0.11",
+    "nativescript-dev-android-snapshot": "^0.*.*",
+    "nativescript-dev-typescript": "^0.4.0",
+    "typescript": "~2.2.1"
+  }
+}

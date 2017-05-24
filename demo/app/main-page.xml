@@ -1,0 +1,29 @@
+<Page navigatingTo="onNavigatingTo">
+  <ActionBar title="Meme Generator"></ActionBar>
+
+  <ScrollView>
+    <StackLayout class="form p-10">
+      <StackLayout class="input-field">
+        <Label text="Top text" class="label font-weight-bold m-b-5" />
+        <TextField class="input" text="{{ topText }}" />
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+
+      <StackLayout class="input-field">
+        <Label text="Bottom text" class="label font-weight-bold m-b-5" />
+        <TextField class="input" text="{{ bottomText }}" />
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+
+      <StackLayout class="input-field">
+        <Label text="Font size" class="label font-weight-bold m-b-5" />
+        <Slider minValue="1" maxValue="100" value="{{ fontSize }}" class="slider"></Slider>
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+
+      <Button class="button" text="Generate meme" class="btn btn-primary" tap="generateMeme"></Button>
+      
+      <Image src="{{ image }}" class="m-t-10"></Image>
+    </StackLayout>
+  </ScrollView>
+</Page>
