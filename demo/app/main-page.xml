@@ -1,8 +1,15 @@
-<Page navigatingTo="onNavigatingTo">
+<Page navigatingTo="onNavigatingTo" class="page"
+  xmlns:meme="nativescript-meme-generator">
+
   <ActionBar title="Meme Generator"></ActionBar>
 
   <ScrollView>
     <StackLayout class="form p-10">
+
+
+
+      <meme:Meme topText="jfojdsaoifdsi fioajfiosjfisd" memeImage="{{ image }}" height="200" width="200"></meme:Meme>
+
       <StackLayout class="input-field">
         <Label text="Top text" class="label font-weight-bold m-b-5" />
         <TextField class="input" text="{{ topText }}" />

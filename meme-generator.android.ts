@@ -1,5 +1,7 @@
 import { fromNativeSource, ImageSource } from "image-source";
 
+import { MemeBase, topTextProperty } from "./meme-base";
+
 export class MemeGenerator {
   generate(options) {
     var topText = options.topText || "";
@@ -25,5 +27,13 @@ export class MemeGenerator {
     canvas.drawText(bottomText, 30, bitmap.getHeight() - 60, paint);
 
     return fromNativeSource(bitmap);
+  }
+}
+
+export class Meme extends MemeBase {
+  nativeView: android.widget.Button;
+
+  [topTextProperty.setNative](value: string) {
+    this.nativeView.setText(value);
   }
 }

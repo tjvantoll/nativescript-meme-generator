@@ -1,6 +1,8 @@
 import { fromNativeSource, ImageSource } from "image-source";
 import { Color } from "color";
 
+import { MemeBase, topTextProperty, bottomTextProperty, fontSizeProperty, memeImageProperty } from "./meme-base";
+
 var font;
 var uiImage;
 
@@ -44,5 +46,92 @@ export class MemeGenerator {
 
     // Return the image as an ImageSource
     return fromNativeSource(newImage);
+  }
+}
+
+/*export class Meme extends MemeBase {
+  generator: MemeGenerator;
+  nativeView: UIImageView;
+
+  constructor() {
+    super();
+    this.generator = new MemeGenerator();
+    this.nativeView = UIImageView.new();
+  }
+
+  buildMeme() {
+    if (!this.image) {
+      return;
+    }
+
+    let image = this.generator.generate({
+      topText: this.topText,
+      bottomText: this.bottomText,
+      fontSize: this.fontSize,
+      image: this.image
+    });
+
+    this.nativeView.image = image.ios;
+  }
+
+  [topTextProperty.setNative](value: string) {
+    this.buildMeme();
+  }
+  [bottomTextProperty.setNative](value: string) {
+    this.buildMeme();
+  }
+  [fontSizeProperty.setNative](value: number) {
+    this.buildMeme();
+  }
+  [imageProperty.setNative](value: ImageSource) {
+    this.buildMeme();
+  }
+}
+*/
+
+export class Meme extends MemeBase {
+  generator: MemeGenerator;
+
+  constructor() {
+    super();
+    this.generator = new MemeGenerator();
+    console.log("1");
+  }
+
+  buildMeme() {
+    console.log("2");
+    if (!this.memeImage) {
+      return;
+    }
+
+    console.log("3");
+    let image = this.generator.generate({
+      topText: this.topText,
+      bottomText: this.bottomText,
+      fontSize: this.fontSize,
+      image: this.memeImage
+    });
+
+    console.log("4");
+
+    this.ios.image = image.ios;
+    this.requestLayout();
+  }
+
+  [topTextProperty.setNative](value: string) {
+    console.log("6");
+    this.buildMeme();
+  }
+  [bottomTextProperty.setNative](value: string) {
+    console.log("7");
+    this.buildMeme();
+  }
+  [fontSizeProperty.setNative](value: number) {
+    console.log("8");
+    this.buildMeme();
+  }
+  [memeImageProperty.setNative](value: ImageSource) {
+    console.log("9");
+    this.buildMeme();
   }
 }
