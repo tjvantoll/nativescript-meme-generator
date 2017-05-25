@@ -1,6 +1,8 @@
 import { fromNativeSource, ImageSource } from "image-source";
 
-import { MemeBase, topTextProperty, bottomTextProperty, fontSizeProperty, memeImageSourceProperty } from "./meme-base";
+import { MemeBase } from "./meme-base";
+
+export class Meme extends MemeBase {};
 
 export class MemeGenerator {
   generate(options) {
@@ -27,42 +29,5 @@ export class MemeGenerator {
     canvas.drawText(bottomText, 30, bitmap.getHeight() - 60, paint);
 
     return fromNativeSource(bitmap);
-  }
-}
-
-export class Meme extends MemeBase {
-  generator: MemeGenerator;
-
-  constructor() {
-    super();
-    this.generator = new MemeGenerator();
-  }
-
-  buildMeme() {
-    if (!this.memeImageSource) {
-      return;
-    }
-
-    let image = this.generator.generate({
-      topText: this.topText,
-      bottomText: this.bottomText,
-      fontSize: this.fontSize,
-      image: this.memeImageSource
-    });
-
-    this.set("imageSource", image);
-  }
-
-  [topTextProperty.setNative](value: string) {
-    this.buildMeme();
-  }
-  [bottomTextProperty.setNative](value: string) {
-    this.buildMeme();
-  }
-  [fontSizeProperty.setNative](value: number) {
-    this.buildMeme();
-  }
-  [memeImageSourceProperty.setNative](value: ImageSource) {
-    this.buildMeme();
   }
 }

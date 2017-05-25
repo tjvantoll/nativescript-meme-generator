@@ -1,7 +1,8 @@
 import { fromNativeSource, ImageSource } from "image-source";
 import { Color } from "color";
 
-import { MemeBase, topTextProperty, bottomTextProperty, fontSizeProperty, memeImageSourceProperty } from "./meme-base";
+import { MemeBase } from "./meme-base";
+export class Meme extends MemeBase {};
 
 var font;
 var uiImage;
@@ -46,43 +47,5 @@ export class MemeGenerator {
 
     // Return the image as an ImageSource
     return fromNativeSource(newImage);
-  }
-}
-
-export class Meme extends MemeBase {
-  generator: MemeGenerator;
-
-  constructor() {
-    super();
-    this.generator = new MemeGenerator();
-  }
-
-  buildMeme() {
-    if (!this.memeImageSource) {
-      return;
-    }
-
-    let image = this.generator.generate({
-      topText: this.topText,
-      bottomText: this.bottomText,
-      fontSize: this.fontSize,
-      image: this.memeImageSource
-    });
-
-    this.ios.image = image.ios;
-    this.requestLayout();
-  }
-
-  [topTextProperty.setNative](value: string) {
-    this.buildMeme();
-  }
-  [bottomTextProperty.setNative](value: string) {
-    this.buildMeme();
-  }
-  [fontSizeProperty.setNative](value: number) {
-    this.buildMeme();
-  }
-  [memeImageSourceProperty.setNative](value: ImageSource) {
-    this.buildMeme();
   }
 }
