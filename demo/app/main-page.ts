@@ -19,9 +19,9 @@ export function onNavigatingTo(args: EventData) {
      android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
  }
 
-  pageData.set("topText", "Building apps with NativeScript");
-  pageData.set("bottomText", "is awesome!");
-  pageData.set("fontSize", 30);
+  pageData.set("topText", "NativeScript is");
+  pageData.set("bottomText", "🔥💯🌮🤘🎉😎");
+  pageData.set("fontSize", 50);
   pageData.set("image", originalImage);
 
   page.bindingContext = pageData;
