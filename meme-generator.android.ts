@@ -1,6 +1,6 @@
 import { fromNativeSource, ImageSource } from "image-source";
 
-import { MemeBase, topTextProperty } from "./meme-base";
+import { MemeBase, topTextProperty, bottomTextProperty, fontSizeProperty, memeImageSourceProperty } from "./meme-base";
 
 export class MemeGenerator {
   generate(options) {
@@ -31,9 +31,38 @@ export class MemeGenerator {
 }
 
 export class Meme extends MemeBase {
-  nativeView: android.widget.Button;
+  generator: MemeGenerator;
+
+  constructor() {
+    super();
+    this.generator = new MemeGenerator();
+  }
+
+  buildMeme() {
+    if (!this.memeImageSource) {
+      return;
+    }
+
+    let image = this.generator.generate({
+      topText: this.topText,
+      bottomText: this.bottomText,
+      fontSize: this.fontSize,
+      image: this.memeImageSource
+    });
+
+    this.set("imageSource", image);
+  }
 
   [topTextProperty.setNative](value: string) {
-    this.nativeView.setText(value);
+    this.buildMeme();
+  }
+  [bottomTextProperty.setNative](value: string) {
+    this.buildMeme();
+  }
+  [fontSizeProperty.setNative](value: number) {
+    this.buildMeme();
+  }
+  [memeImageSourceProperty.setNative](value: ImageSource) {
+    this.buildMeme();
   }
 }

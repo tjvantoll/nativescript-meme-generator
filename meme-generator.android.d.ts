@@ -4,5 +4,7 @@ export declare class MemeGenerator {
     generate(options: any): ImageSource;
 }
 export declare class Meme extends MemeBase {
-    nativeView: android.widget.Button;
+    generator: MemeGenerator;
+    constructor();
+    buildMeme(): void;
 }
